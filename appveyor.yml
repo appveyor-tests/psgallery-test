@@ -1,0 +1,9 @@
+environment:
+  psg_api_key:
+    secure: yG4Zx5pchfapCdOfL5iCh9WvcDpGTyhdlPZbjDCwy55apwGNSmg3zDSq0JZBEA8w
+  
+build: off
+
+test_script:
+- ps: Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery -Recurse -Force
+- ps: Publish-Module -Name AppVeyorTestPsGallery -NuGetApiKey $env:psg_api_key
