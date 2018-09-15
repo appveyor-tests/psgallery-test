@@ -17,4 +17,4 @@ test_script:
 - ps: Install-Module AppVeyorTestPsGallery -Scope AllUsers
 - ps: Get-PackageProvider
 - ps: Get-Module
-- ps: dir $env:ProgramFiles\WindowsPowerShell\Modules
+- ps: Get-Content $env:ProgramFiles\WindowsPowerShell\Modules\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
