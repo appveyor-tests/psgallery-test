@@ -14,7 +14,7 @@ test_script:
 - ps: Remove-Item $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery -Recurse -Force
 - ps: Write-Host "Wait for 30 seconds until the module is published"; Start-Sleep -s 30
 - ps: Find-Module AppVeyorTestPsGallery
-- ps: Install-Module AppVeyorTestPsGallery
+- ps: Install-Module AppVeyorTestPsGallery -Scope CurrentUser
 - ps: Get-PackageProvider
 - ps: Get-Module
 - ps: Get-Content $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
