@@ -5,6 +5,7 @@ environment:
 build: off
 
 test_script:
+- ps: Install-PackageProvider Nuget –Force
 - ps: Find-Module AppVeyorTestPsGallery
 - ps: (Get-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1).replace('<BUILD_VERSION>', $env:APPVEYOR_BUILD_VERSION) | Set-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
 - ps: mkdir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
