@@ -10,4 +10,9 @@ test_script:
 - ps: mkdir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
 - ps: Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery\ -Recurse -Force
 - ps: Publish-Module -Name AppVeyorTestPsGallery -NuGetApiKey $env:psg_api_key
+- ps: Remove-Item $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery -Recurse -Force
+- ps: Write-Host "Wait for 30 seconds until the module is published"; Start-Sleep -s 30
 - ps: Find-Module AppVeyorTestPsGallery
+- ps: Install-Module AppVeyorTestPsGallery
+- ps: Get-PackageProvider
+- ps: Get-Module
