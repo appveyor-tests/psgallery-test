@@ -5,7 +5,9 @@ environment:
 build: off
 
 test_script:
+- ps: Find-Module AppVeyorTestPsGallery
 - ps: (Get-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1).replace('<BUILD_VERSION>', $env:APPVEYOR_BUILD_VERSION) | Set-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
 - ps: mkdir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
 - ps: Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery\ -Recurse -Force
 - ps: Publish-Module -Name AppVeyorTestPsGallery -NuGetApiKey $env:psg_api_key
+- ps: Find-Module AppVeyorTestPsGallery
