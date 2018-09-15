@@ -5,7 +5,6 @@ environment:
 build: off
 
 test_script:
-- ps: dir .\AppVeyorTestPsGallery\
-- ps: Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery -Recurse -Force
-- ps: dir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
+- ps: mkdir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
+- ps: Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery\ -Recurse -Force
 - ps: Publish-Module -Name AppVeyorTestPsGallery -NuGetApiKey $env:psg_api_key
