@@ -6,7 +6,6 @@ build: off
 
 test_script:
 - ps: $ErrorActionPreference = "Stop"
-- ps: Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 - ps: Get-PSRepository
 - ps: Find-Module AppVeyorTestPsGallery
 - ps: (Get-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1).replace('<BUILD_VERSION>', $env:APPVEYOR_BUILD_VERSION) | Set-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
