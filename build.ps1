@@ -1,13 +1,19 @@
 $ErrorActionPreference = "Stop"
+echo Get-PSRepository
 Get-PSRepository
+$ErrorActionPreference
+echo 'Find-Module AppVeyorTestPsGallery'
 Find-Module AppVeyorTestPsGallery
+$ErrorActionPreference
 (Get-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1).replace('<BUILD_VERSION>', $env:APPVEYOR_BUILD_VERSION) | Set-Content .\AppVeyorTestPsGallery\AppVeyorTestPsGallery.psd1
 mkdir $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery
 Copy-Item .\AppVeyorTestPsGallery\* $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery\ -Recurse -Force
 Publish-Module -Name AppVeyorTestPsGallery -NuGetApiKey $env:psg_api_key
 Remove-Item $env:userprofile\Documents\WindowsPowerShell\Modules\AppVeyorTestPsGallery -Recurse -Force
 Write-Host "Wait for 30 seconds until the module is published"; Start-Sleep -s 30
+echo 'Find-Module AppVeyorTestPsGallery'
 Find-Module AppVeyorTestPsGallery
+$ErrorActionPreference
 Install-Module AppVeyorTestPsGallery -Scope AllUsers
 Get-PackageProvider
 Get-Module
