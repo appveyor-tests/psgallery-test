@@ -1,6 +1,6 @@
 environment:
   psg_api_key:
-    secure: cb6MODhRY6rYYLXKCub+5NfhTfYW+OTwHlCDiHBm5FnGPpwFfSmaHaHFv//bOkgr
+    secure: zCMMo4h9MrdM9+jbF+fvWIVFIlw5KkcjZSX0WLQHwH07qNK6PE6BvdPcoch88gE/
   
 build: off
 
